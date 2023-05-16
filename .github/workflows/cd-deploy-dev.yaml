@@ -20,6 +20,7 @@ jobs:
          # password: ${{ secrets.DOCKER_REPOSITORY_PASSWORD }}
           
       - name: Login to Docker Hub
-        run: |
-          echo "${{ secrets.DOCKER_REPOSITORY_PASSWORD }}" | docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_REPOSITORY_PASSWORD"
+        run: echo "${{ secrets.DOCKER_REPOSITORY_PASSWORD }}"
+      - name: login 
+        run: docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_REPOSITORY_PASSWORD"
 
