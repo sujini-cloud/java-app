@@ -59,7 +59,7 @@ jobs:
         with:
           #namespace: dev
           manifests: |
-            ${{github.workspace}}/kube-manifests/deployment-service.yml
+            /home/sujini/java-app/kube-manifests/deployment-service.yml
 
           
       
