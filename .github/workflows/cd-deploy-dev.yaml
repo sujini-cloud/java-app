@@ -18,7 +18,7 @@ jobs:
       
       CLUSTER_NAME: myAKSCluster
       RESOURSE_GROUP: myResourceGroup
-    needs: [build]
+    #needs: [build]
     environment: dev
     steps:
       - name: Display the path
