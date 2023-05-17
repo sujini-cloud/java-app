@@ -21,6 +21,9 @@ jobs:
     needs: [build]
     environment: dev
     steps:
+      - name: Display the path
+        run: $(pwd)
+        shell: bash
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       
@@ -55,11 +58,11 @@ jobs:
           cluster-name: ${{ env.CLUSTER_NAME }}
           resource-group: ${{ env.RESOURSE_GROUP }}
           
-      - uses: Azure/k8s-deploy@v1
-        with:
-          #namespace: dev
-          manifests: |
-            /home/sujini/java-app/kube-manifests/deployment-service.yml
+#       - uses: Azure/k8s-deploy@v1
+#         with:
+#           #namespace: dev
+#           manifests: |
+#             /home/sujini/java-app/kube-manifests/deployment-service.yml
 
           
       
