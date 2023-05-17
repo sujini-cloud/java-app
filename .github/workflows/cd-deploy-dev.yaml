@@ -6,9 +6,9 @@ on:
     - 'main'
 
 jobs:
-  build: 
-    uses: ./.github/workflows/CI-java-build-package-maven.yml
-    secrets: inherit
+#   build: 
+#     uses: ./.github/workflows/CI-java-build-package-maven.yml
+#     secrets: inherit
   deploy-dev:
     runs-on: ubuntu-latest
     env:
@@ -22,7 +22,7 @@ jobs:
     environment: dev
     steps:
       - name: Display the path
-        run: $(pwd)
+        run: pwd
         shell: bash
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
