@@ -6,9 +6,9 @@ on:
     - 'main'
 
 jobs:
-#   build: 
-#     uses: ./.github/workflows/CI-java-build-package-maven.yml
-#     secrets: inherit
+  build: 
+    uses: ./.github/workflows/CI-java-build-package-maven.yml
+    secrets: inherit
   deploy-dev:
     runs-on: ubuntu-latest
     env:
@@ -18,7 +18,7 @@ jobs:
       
       CLUSTER_NAME: myAKSCluster
       RESOURSE_GROUP: myResourceGroup
-    #needs: [build]
+    needs: [build]
     environment: dev
     steps:
       - name: Display the path
@@ -58,11 +58,11 @@ jobs:
           cluster-name: ${{ env.CLUSTER_NAME }}
           resource-group: ${{ env.RESOURSE_GROUP }}
           
-#       - uses: Azure/k8s-deploy@v1
-#         with:
-#           #namespace: dev
-#           manifests: |
-#             /home/sujini/java-app/kube-manifests/deployment-service.yml
+      - uses: Azure/k8s-deploy@v1
+        with:
+          #namespace: dev
+          manifests: |
+            /home/runner/work/java-app/java-app/kube-manifests/deployment-service.yml
 
           
       
