@@ -62,7 +62,7 @@ jobs:
         with:
           #namespace: dev
           manifests: |
-            /home/runner/work/java-app/java-app/kube-manifests/deployment-service.yml
+            kube-manifests/deployment-service.yml
 
           
       
