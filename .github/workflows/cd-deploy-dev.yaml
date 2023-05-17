@@ -48,14 +48,14 @@ jobs:
 
         # Set the target AKS cluster.
       - name: Deploy to AKS
-      - uses: Azure/aks-set-context@v1
+        uses: Azure/aks-set-context@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           cluster-name: ${{ env.CLUSTER_NAME }}
           resource-group: ${{ env.RESOURSE_GROUP }}
       
       - name: Apply Kubernetes deployment
-      - uses: Azure/k8s-deploy@v1
+        uses: Azure/k8s-deploy@v1
         with:
           #namespace: dev
           manifests: |
