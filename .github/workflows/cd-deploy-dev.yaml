@@ -63,6 +63,9 @@ jobs:
           #namespace: dev
           manifests: |
             kube-manifests/deployment-service.yml
+          images: |
+            sujinidocker/java-app:${{ github.run_number }}
+            
 
           
       
