@@ -8,6 +8,7 @@ on:
 jobs:
   build: 
     uses: ./.github/workflows/CI-java-build-package-maven.yml
+    secrets: inherit
   deploy-dev:
     runs-on: ubuntu-latest
     needs: [build]
