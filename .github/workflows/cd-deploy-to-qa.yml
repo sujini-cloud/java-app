@@ -1,9 +1,9 @@
-name: deploy to aks dev-env
+name: deploy to aks qa-env
 on:
   workflow_dispatch:
   push:
     branches:
-    - 'develop'
+    - 'qa'
 
 jobs:
   build: 
@@ -19,7 +19,7 @@ jobs:
       CLUSTER_NAME: myAKSCluster
       RESOURSE_GROUP: myResourceGroup
     needs: [build]
-    environment: dev
+    environment: qa
     steps:
       - name: Display the path
         run: pwd
@@ -57,7 +57,7 @@ jobs:
       - name: Apply Kubernetes deployment
         uses: Azure/k8s-deploy@v1
         with:
-          namespace: dev
+          namespace: qa
           manifests: |
             kubernetes/deployment.yml
           images: |
@@ -69,4 +69,3 @@ jobs:
           
           
           
-
