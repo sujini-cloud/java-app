@@ -46,7 +46,7 @@ jobs:
           
     
 
-        # Set the target AKS cluster.
+        # Set the target AKS cluster..
       - name: Deploy to AKS
         uses: Azure/aks-set-context@v1
         with:
