@@ -9,7 +9,7 @@ jobs:
   build: 
     uses: ./.github/workflows/CI-java-build-package-maven.yml
     secrets: inherit
-  deploy-dev:
+  deploy-prod:
     runs-on: ubuntu-latest
     env:
       DOCKER_HUB_USERNAME: sujinidocker # name of Docker Hub ID
