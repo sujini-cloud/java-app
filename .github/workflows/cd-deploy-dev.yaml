@@ -1,4 +1,4 @@
-name: deploy to aks dev-env
+name: deploy to aks 
 on:
   workflow_dispatch:
   push:
@@ -66,6 +66,7 @@ jobs:
             
  
   deploy-qa:
+    needs: [build, deploy-dev]
     runs-on: ubuntu-latest
     env:
       DOCKER_HUB_USERNAME: sujinidocker # name of Docker Hub ID
@@ -74,7 +75,7 @@ jobs:
       
       CLUSTER_NAME: myAKSCluster
       RESOURSE_GROUP: myResourceGroup
-    needs: [build]
+    
     environment: qa
     steps:
       - name: Display the path
@@ -118,17 +119,18 @@ jobs:
             sujinidocker/java-app:${{ github.run_number }} 
             
   deploy-prod:
-      runs-on: ubuntu-latest
-      env:
-         DOCKER_HUB_USERNAME: sujinidocker # name of Docker Hub ID
-         IMAGE_NAME: java-app
-         IMAGE_TAG: ${{ github.run_number }}
+    needs: [build, deploy-dev, deploy-qa]
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_HUB_USERNAME: sujinidocker # name of Docker Hub ID
+      IMAGE_NAME: java-app
+      IMAGE_TAG: ${{ github.run_number }}
       
-         CLUSTER_NAME: myAKSCluster
-         RESOURSE_GROUP: myResourceGroup
-      needs: [build]
-      environment: prod
-      steps:
+      CLUSTER_NAME: myAKSCluster
+      RESOURSE_GROUP: myResourceGroup
+      
+    environment: prod
+    steps:
       - name: Display the path
         run: pwd
         shell: bash
