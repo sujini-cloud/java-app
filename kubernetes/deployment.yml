@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: java-webapp1
-          image: sujinidocker/java-app:${{ github.run_number }}
+          image: sriharipriya/java-app:${{ github.run_number }}
 
           ports: 
             - containerPort: 8080
