@@ -13,7 +13,7 @@ jobs:
     
     runs-on: ubuntu-latest
     env:
-      DOCKER_HUB_USERNAME: sriharipriya # name of Docker Hub ID
+      DOCKER_HUB_USERNAME: sujinidocker # name of Docker Hub ID
       IMAGE_NAME: java-app
       IMAGE_TAG: ${{ github.run_number }}
       
@@ -62,4 +62,4 @@ jobs:
           manifests: |
             kubernetes/deployment.yml
           images: |
-            sriharipriya/java-app:${{ github.run_number }}
+            sujinidocker/java-app:${{ github.run_number }}
